@@ -1,6 +1,8 @@
 use std::time::Duration;
 use quanta::Clock;
 use crate::bench::Count;
+use raw_cpuid::CpuIdReader;
+use raw_cpuid::native_cpuid::CpuIdReaderNative;
 
 pub fn black_box<T>(dummy: T) -> T {
     unsafe { std::ptr::read_volatile(&dummy) }
@@ -29,7 +31,8 @@ pub fn clock_read_overhead_sum(clock: &Clock, num_iterations: Count) -> Duration
     all(target_arch = "x86", not(target_env = "sgx"), target_feature = "sse"),
     all(target_arch = "x86_64", not(target_env = "sgx"))
 ))]
-pub fn get_cpuid() -> Option<raw_cpuid::CpuId> {
+pub fn get_cpuid() -> Option<raw_cpuid::CpuId<CpuIdReaderNative>> {
+
     Some(raw_cpuid::CpuId::default())
 }
 

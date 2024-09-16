@@ -10,12 +10,12 @@ edition = "2021"
 exclude = ["/results"]
 
 [dependencies]
-core_affinity = "0.5"
-quanta = "0.10"
-clap = { version = "3", features = ["derive"] }
-ndarray = "0.15"
+core_affinity = "0.8.1"
+quanta = "0.12.3"
+clap = { version = "4.5.17", features = ["derive"] }
+ndarray = "0.16.1"
 ansi_term = "0.12"
-ordered-float = "3"
+ordered-float = "4.2.2"
 cache-padded = "1.2"
 crossbeam-utils = { version = "0.8", default-features = false }
-raw-cpuid = "10"
+raw-cpuid = "11.1.0"
